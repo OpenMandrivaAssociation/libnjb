@@ -3,8 +3,9 @@
 %define	rel	5
 %define release %mkrel %{rel}
 
-%define major	5
-%define libname %mklibname njb %{major}
+%define major		5
+%define libname 	%mklibname njb %{major}
+%define develname	%mklibname njb -d
 
 Name: 	 	%{name}
 Summary: 	Lightweight C library which eases the writing of UNIX daemons
@@ -16,10 +17,10 @@ Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
 URL:		http://sourceforge.net/projects/libnjb/
 License:	BSD
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  libusb-devel
 BuildRequires:  doxygen
+
 %description
 Provides a user-level API (C library) for communicating with the
 Creative Nomad JukeBox MP3 player under Linux and *BSD, as well
@@ -31,8 +32,6 @@ Summary:        Dynamic libraries from %{name}
 Group:          System/Libraries
 Provides:	daemon
 Obsoletes:	daemon = %{version}-%{release}
-#gw for the hotplug support
-Requires:	%name >= %version
 
 %description -n %{libname}
 Provides a user-level API (C library) for communicating with the
@@ -41,26 +40,26 @@ as simple command-line utilities to demonstrate the API functions.
 This library works in user space.
 This libraries from %{name}.
 
-%package -n 	%{libname}-devel
+%package -n 	%{develname}
 Summary: 	Header files and static libraries from %name
 Group: 		Development/C
 Requires: 	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release} 
-Obsoletes: 	%{name}-devel
+Obsoletes:	%{mklibname njb 5 -d}
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
 
 %build
-%configure2_5x --enable-hotplugging
+%configure2_5x
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT installed-docs
-%makeinstall hotplugdir=%buildroot%_sysconfdir/hotplug/usb pkgdocdir=`pwd`/installed-docs
+%makeinstall pkgdocdir=`pwd`/installed-docs
 #gw TODO fix device ownership
 install -D -m 644 nomad.rules %buildroot%_sysconfdir/udev/rules.d/nomad.rules
 mkdir -p %buildroot%_datadir/hal/information/20thirdparty/
@@ -78,8 +77,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog FAQ HACKING  README LICENSE
 %{_bindir}/*
-%config(noreplace) %_sysconfdir/hotplug/usb/nomad.usermap
-%attr(755,root,root) %config(noreplace) %_sysconfdir/hotplug/usb/nomadjukebox
 %config(noreplace) %_sysconfdir/udev/rules.d/nomad.rules
 %_datadir/hal/information/20thirdparty/20-njb.fdi
 
@@ -87,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_libdir}/libnjb.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc installed-docs/*
 %{_includedir}/%{name}.h
