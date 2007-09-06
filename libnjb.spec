@@ -1,6 +1,6 @@
 %define name	libnjb
-%define version	2.2.5
-%define	rel	5
+%define version	2.2.6
+%define	rel	1
 %define release %mkrel %{rel}
 
 %define major		5
