@@ -17,6 +17,7 @@ Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
 URL:		http://sourceforge.net/projects/libnjb/
 License:	BSD
 Group:		System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  libusb-devel
 BuildRequires:  doxygen
