@@ -1,7 +1,5 @@
 %define name	libnjb
 %define version	2.2.6
-%define	rel	1
-%define release %mkrel %{rel}
 
 %define major		5
 %define libname 	%mklibname njb %{major}
@@ -10,7 +8,7 @@
 Name: 	 	%{name}
 Summary: 	Lightweight C library which eases the writing of UNIX daemons
 Version: 	%{version}
-Release: 	%{release}
+Release: 	%mkrel 2
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
 Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
