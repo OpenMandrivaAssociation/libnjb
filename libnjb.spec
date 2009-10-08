@@ -8,7 +8,7 @@
 Name: 	 	%{name}
 Summary: 	Lightweight C library which eases the writing of UNIX daemons
 Version: 	%{version}
-Release: 	%mkrel 4
+Release: 	%mkrel 5
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
 Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
