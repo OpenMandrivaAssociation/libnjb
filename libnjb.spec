@@ -11,7 +11,6 @@ Version: 	%{version}
 Release: 	%mkrel 5
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
-Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
 Patch0:		libnjb-2.2.6-optimize-udev-rule.patch
 URL:		http://sourceforge.net/projects/libnjb/
 License:	BSD
@@ -59,14 +58,11 @@ Libraries and includes files for developing programs based on %name.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT installed-docs
+rm -rf %{buildroot} installed-docs
 %makeinstall pkgdocdir=`pwd`/installed-docs
 #gw TODO fix device ownership
 install -m644 nomad.rules -D %{buildroot}%{_sysconfdir}/udev/rules.d/60-libnjb.rules
-mkdir -p %{buildroot}%{_datadir}/hal/information/20thirdparty/
-# gw TODO fix resmgr config in hal according to
-# http://banshee-project.org/Releases/0.10.10
-bzcat %SOURCE1 > %{buildroot}%{_datadir}/hal/information/20thirdparty/20-njb.fdi
+install -m644 libnjb.fdi -D %{buildroot}%{_datadir}/hal/fdi/information/10freedesktop/10-usb-music-players-libnjb.fdi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog FAQ HACKING  README LICENSE
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/udev/rules.d/60-libnjb.rules
-%{_datadir}/hal/information/20thirdparty/20-njb.fdi
+%{_datadir}/hal/fdi/information/10freedesktop/10-usb-music-players-libnjb.fdi
 
 %files -n %{libname}
 %defattr(-,root,root)
