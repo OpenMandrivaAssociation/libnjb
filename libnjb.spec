@@ -12,6 +12,7 @@ Release: 	%mkrel 5
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
 Source1:	http://banshee-project.org/files/misc/20-njb.fdi.bz2
+Patch0:		libnjb-2.2.6-optimize-udev-rule.patch
 URL:		http://sourceforge.net/projects/libnjb/
 License:	BSD
 Group:		System/Libraries
@@ -51,6 +52,7 @@ Libraries and includes files for developing programs based on %name.
 
 %prep
 %setup -q
+%patch0 -p1 -b .udev_opt~
 
 %build
 %configure2_5x
