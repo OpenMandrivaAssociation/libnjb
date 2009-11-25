@@ -62,11 +62,11 @@ Libraries and includes files for developing programs based on %name.
 rm -rf $RPM_BUILD_ROOT installed-docs
 %makeinstall pkgdocdir=`pwd`/installed-docs
 #gw TODO fix device ownership
-install -D -m 644 nomad.rules %buildroot%_sysconfdir/udev/rules.d/nomad.rules
-mkdir -p %buildroot%_datadir/hal/information/20thirdparty/
+install -m644 nomad.rules -D %{buildroot}%{_sysconfdir}/udev/rules.d/60-libnjb.rules
+mkdir -p %{buildroot}%{_datadir}/hal/information/20thirdparty/
 # gw TODO fix resmgr config in hal according to
 # http://banshee-project.org/Releases/0.10.10
-bzcat %SOURCE1 > %buildroot%_datadir/hal/information/20thirdparty/20-njb.fdi
+bzcat %SOURCE1 > %{buildroot}%{_datadir}/hal/information/20thirdparty/20-njb.fdi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,8 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog FAQ HACKING  README LICENSE
 %{_bindir}/*
-%config(noreplace) %_sysconfdir/udev/rules.d/nomad.rules
-%_datadir/hal/information/20thirdparty/20-njb.fdi
+%config(noreplace) %{_sysconfdir}/udev/rules.d/60-libnjb.rules
+%{_datadir}/hal/information/20thirdparty/20-njb.fdi
 
 %files -n %{libname}
 %defattr(-,root,root)
