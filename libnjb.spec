@@ -8,7 +8,7 @@
 Name: 	 	%{name}
 Summary:	A software library for talking to the Creative Nomad Jukeboxes and Dell DJs
 Version: 	%{version}
-Release: 	%mkrel 6
+Release: 	%mkrel 7
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
 Patch0:		libnjb-2.2.6-optimize-udev-rule.patch
