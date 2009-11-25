@@ -12,6 +12,7 @@ Release: 	%mkrel 6
 
 Source0:	http://prdownloads.sourceforge.net/libnjb/%{name}-%{version}.tar.bz2
 Patch0:		libnjb-2.2.6-optimize-udev-rule.patch
+Patch1:		libnjb-2.2.6-libnjb.fdi-cvs-revision-1.3.patch
 URL:		http://sourceforge.net/projects/libnjb/
 License:	BSD
 Group:		System/Libraries
@@ -52,6 +53,7 @@ Libraries and includes files for developing programs based on %name.
 %prep
 %setup -q
 %patch0 -p1 -b .udev_opt~
+%patch1 -p1 -b .fdi_rev1.3~
 
 %build
 %configure2_5x
