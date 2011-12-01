@@ -67,7 +67,7 @@ install -m644 nomad.rules -D %{buildroot}%{_sysconfdir}/udev/rules.d/60-libnjb.r
 install -m644 libnjb.fdi -D %{buildroot}%{_datadir}/hal/fdi/information/10freedesktop/10-usb-music-players-libnjb.fdi
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
