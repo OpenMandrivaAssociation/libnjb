@@ -1,0 +1,12 @@
+diff -p -up libnjb-2.2.6/nomad.rules.udev_opt~ libnjb-2.2.6/nomad.rules
+--- libnjb-2.2.6/nomad.rules.udev_opt~	2007-09-05 17:27:14.000000000 -0400
++++ libnjb-2.2.6/nomad.rules	2009-11-24 21:49:59.152934190 -0500
+@@ -30,7 +30,7 @@
+   NAME="%c", MODE="0644"
+ 
+ ACTION!="add", GOTO="nomad_rules_end"
+-ATTR{dev}!="?*", GOTO="nomad_rules_end"
++ENV{MAJOR}!="?*", GOTO="nomad_rules_end"
+ SUBSYSTEM=="usb", GOTO="nomad_usb_rules"
+ SUBSYSTEM=="usb_device", GOTO="nomad_usb_device_rules"
+ GOTO="nomad_rules_end"
