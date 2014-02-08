@@ -5,7 +5,7 @@
 Summary:	A software library for talking to the Creative Nomad Jukeboxes and Dell DJs
 Name: 	 	libnjb
 Version: 	2.2.7
-Release: 	1
+Release: 	2
 License:	BSD
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/libnjb/
