@@ -8,7 +8,7 @@ Version: 	2.2.7
 Release: 	11
 License:	BSD
 Group:		System/Libraries
-Url:		http://sourceforge.net/projects/libnjb/
+Url:		https://sourceforge.net/projects/libnjb/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		libnjb-2.2.6-optimize-udev-rule.patch
 
